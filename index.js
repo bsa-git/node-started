@@ -1,9 +1,12 @@
-var pg = require('pg');
-var cool = require('cool-ascii-faces');
-var express = require('express');
-var app = express();
+const path = require('path');
+const favicon = require('serve-favicon');
+const pg = require('pg');
+const cool = require('cool-ascii-faces');
+const express = require('express');
+const app = express();
 
 app.set('port', (process.env.PORT || 3000));
+app.use(favicon(path.join(__dirname, 'public', 'img/favicon.png')));
 
 app.use(express.static(__dirname + '/public'));
 
@@ -20,10 +23,11 @@ app.get('/cool', function (request, response) {
 });
 
 app.get('/times', function (request, response) {
-    var result = ''
-    var times = process.env.TIMES || 5
-    for (i = 0; i < times; i++)
+    let result = '';
+    const times = process.env.TIMES || 5;
+    for (i = 0; i < times; i++){
         result += i + ' ';
+    }
     response.send(result);
 });
 
