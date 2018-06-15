@@ -1,53 +1,55 @@
 const path = require('path');
 const favicon = require('serve-favicon');
-const pg = require('pg');
-const cool = require('cool-ascii-faces');
+const debug = require('debug')('app:app');
+const chalk = require('chalk');// Terminal string styling done right
+const dotenv = require('dotenv');// Loads environment variables from .env file.
+// const flash = require('express-flash');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+// const pg = require('pg');
+// const cool = require('cool-ascii-faces');
 const express = require('express');
+
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+dotenv.load();
+
+/**
+ * Create Express server.
+ */
 const app = express();
 
-app.set('port', (process.env.PORT || 3000));
+/**
+ * Express configuration.
+ */
+app.set('host', process.env.BASE_URL || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
+app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'public', 'img/favicon.png')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+
+// Using the flash middleware provided by connect-flash to store messages in session
+// and displaying in templates
+// app.use(flash());
 
 app.use(express.static(__dirname + '/public'));
 
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+/**
+ * Controllers init
+ */
+const controllers = require('./controllers');
+controllers.init(app);
 
-app.get('/', function (request, response) {
-    response.render('pages/index')
-});
-
-app.get('/cool', function (request, response) {
-    response.send(cool());
-});
-
-app.get('/times', function (request, response) {
-    let result = '';
-    const times = process.env.TIMES || 5;
-    for (i = 0; i < times; i++){
-        result += i + ' ';
-    }
-    response.send(result);
-});
-
-app.get('/db', function (request, response) {
-    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-        client.query('SELECT * FROM test_table', function (err, result) {
-            done();
-            if (err) {
-                console.error(err);
-                response.send("Error " + err);
-            }
-            else {
-                response.render('pages/db', {results: result.rows});
-            }
-        });
-    });
-});
-
+/**
+ * Server start
+ */
 app.listen(app.get('port'), function () {
-    console.log('Node app is running on port', app.get('port'));
+    console.log('%s App is running at %s:%d in %s mode', chalk.green('✓'), app.get('host'), app.get('port'), app.get('env'));
+    console.log('  Press CTRL-C to stop');
 });
 
 

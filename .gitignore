@@ -11,3 +11,7 @@ npm-debug.log
 # Docker
 Dockerfile
 docker-compose.yml
+
+# Data
+data/db
+data/log

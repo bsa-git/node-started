@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <% include ../partials/header.ejs %>
-</head>
-
-<body>
-
-<% include ../partials/nav.ejs %>
+<% include ../partials/header.ejs %>
 
 <div class="container">
-<h2>Database Results</h2>
+    <h2>Database Results</h2>
 
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
-    <% }); %>
-</ul>
+    <ul class="nav">
+        <% results.forEach(function(r) { %>
+        <li>{ _id: <%= r._id %>; counter: <%= r.counter %>; message: <%= r.message %> }</li>
+        <% }); %>
+    </ul>
 
 </div>
 
-</body>
-</html>
+<% include ../partials/footer.ejs %>
