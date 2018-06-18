@@ -83,6 +83,4 @@ function onError(error) {
 function onListening() {
     debug('%s App is running at %s:%d in %s mode', chalk.green('✓'), app.get('host'), app.get('port'), app.get('env'));
     debug('Press CTRL-C to stop');
-    // console.log('%s App is running at %s:%d in %s mode', chalk.green('✓'), app.get('host'), app.get('port'), app.get('env'));
-    // console.log('Press CTRL-C to stop');
 }

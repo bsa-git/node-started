@@ -2,7 +2,6 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const debug = require('debug')('app:app');
 const dotenv = require('dotenv');// Loads environment variables from .env file.
-// const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const express = require('express');
@@ -33,10 +32,6 @@ app.use(favicon(path.join(__dirname, 'public', 'img/favicon.png')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-
-// Using the flash middleware provided by connect-flash to store messages in session
-// and displaying in templates
-// app.use(flash());
 
 app.use(express.static(__dirname + '/public'));
 
