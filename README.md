@@ -1,4 +1,6 @@
-# node-js-getting-started
+# node-started
+
+### [Live Demo...](https://node-started.herokuapp.com/)
 
 A barebones Node.js app using [Express 4](http://expressjs.com/).
 
@@ -9,13 +11,13 @@ This application supports the [Getting Started with Node on Heroku](https://devc
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
+$ git clone https://github.com/bsa-git/node-started.git # or clone your own fork
+$ cd node-started
 $ npm install
 $ npm start
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+Your app should now be running on [localhost:5000](http://localhost:3000/).
 
 ## Deploying to Heroku
 
