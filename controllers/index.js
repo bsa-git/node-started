@@ -19,4 +19,5 @@ exports.init = (app) => {
     app.get('/cool', coolController.index);
     app.get('/times', timesController.index);
     app.get('/db', dbController.index);
+
 };

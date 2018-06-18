@@ -1,19 +1,23 @@
 const path = require('path');
 const favicon = require('serve-favicon');
 const debug = require('debug')('app:app');
-const chalk = require('chalk');// Terminal string styling done right
 const dotenv = require('dotenv');// Loads environment variables from .env file.
 // const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-// const pg = require('pg');
-// const cool = require('cool-ascii-faces');
 const express = require('express');
+const db = require('./models');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
 dotenv.load();
+
+/**
+ * Connect to MongoDB.
+ */
+db.connect();
+
 
 /**
  * Create Express server.
@@ -23,8 +27,6 @@ const app = express();
 /**
  * Express configuration.
  */
-app.set('host', process.env.BASE_URL || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
-app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(favicon(path.join(__dirname, 'public', 'img/favicon.png')));
@@ -44,12 +46,27 @@ app.use(express.static(__dirname + '/public'));
 const controllers = require('./controllers');
 controllers.init(app);
 
-/**
- * Server start
- */
-app.listen(app.get('port'), function () {
-    console.log('%s App is running at %s:%d in %s mode', chalk.green('✓'), app.get('host'), app.get('port'), app.get('env'));
-    console.log('  Press CTRL-C to stop');
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
+
+// error handler
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.title = 'Error';
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('pages/error');
+});
+
+debug('Bootstrap application - OK');
+
+module.exports = app;
 
 

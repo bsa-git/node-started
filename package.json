@@ -7,8 +7,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "cross-env NODE_ENV=development DEBUG=app:*  nodemon index.js  -e js,ejs",
+    "start": "node server.js",
+    "dev": "cross-env NODE_ENV=development DEBUG=app:*  nodemon server.js  -e js,ejs",
     "start-mongod": "mongod -f mongod.config.yml"
   },
   "dependencies": {
