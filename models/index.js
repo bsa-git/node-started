@@ -16,8 +16,7 @@ exports.connect = () => {
         err => {
             console.error(err);
             console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-            // process.exit();
-            throw err
+            process.exit();
         }
     );
 
