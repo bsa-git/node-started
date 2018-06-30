@@ -81,6 +81,6 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 function onListening() {
-    debug('%s App is running at %s:%d in %s mode', chalk.green('✓'), app.get('host'), app.get('port'), app.get('env'));
+    debug('App is running at %s:%d in %s mode', app.get('host'), app.get('port'), app.get('env'));
     debug('Press CTRL-C to stop');
 }
