@@ -15,3 +15,7 @@ docker-compose.yml
 # Data
 data/db
 data/log
+
+# Public
+public/dist/main.*
+public/dist/polyfills.*
