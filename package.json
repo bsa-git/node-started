@@ -11,7 +11,8 @@
     "build": "webpack",
     "start": "node server.js",
     "dev": "cross-env NODE_ENV=development DEBUG=app:*  nodemon server.js  -e js,ejs --ignore public/",
-    "start-mongod": "mongod -f mongod.config.yml"
+    "start-mongod": "mongod -f mongod.config.yml",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
