@@ -1,28 +1,35 @@
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
-  <div class="container">
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-      </li>
-      <li>
-        <a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span> How Heroku Works</a>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> Getting Started <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="/cool">Cool Ascii Faces</a></li>
-            <li><a href="/times">Times</a></li>
-            <li><a href="/db">DataBase</a></li>
-            <li class="divider"></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-heroku-and-connect-without-local-dev">Getting Started on Heroku with Heroku Connect</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started with Node on Heroku</a></li>
-          </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-right">
-        <a href="https://devcenter.heroku.com"><span class="glyphicon glyphicon-book"></span> Heroku Dev Center</a>
-      </li>
-    </ul>
-  </div>
+<nav class="topbar-nav">
+    <div class="container">
+        <ul class="metismenu" id="top-menu">
+            <li>
+                <a class="<% if (req.path === '/') { %>select<% } %>" href="/" ><span class="fas fa-home"></span> Home</a>
+            </li>
+            <li>
+                <a href="https://devcenter.heroku.com/articles/how-heroku-works" target="_blank"><span class="fas fa-user"></span> How Heroku Works</a>
+            </li>
+            <li>
+                <a class="has-arrow <% if (req.controller === 'exx') { %>select<% } %>" href="#" aria-expanded="false"><span class="fas fa-check-circle"></span> Getting Started</a>
+                <ul aria-expanded="false" class="collapse">
+                    <li>
+                        <a class="has-arrow" href="#" aria-expanded="false"><span class="fas fa-server"></span> Server Actions</a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="/exx/cool">Show Cool Ascii Faces</a></li>
+                            <li><a href="/exx/times">Show Times</a></li>
+                            <li><a href="/exx/flash-message">Send Flash Message</a></li>
+                            <li><a href="/exx/db-messages">Get messages from MongoDB</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="#" aria-expanded="false"><span class="fas fa-laptop"></span> Client Actions</a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="/exx/client-comp">Create Client Component</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://devcenter.heroku.com" target="_blank"><span class="fas fa-book"></span> Heroku Dev Center</a>
+            </li>
+        </ul>
+    </div>
 </nav>

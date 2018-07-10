@@ -9,7 +9,10 @@ const debug = require('debug')('app:models');
  * Connect to MongoDB.
  */
 exports.connect = () => {
-    mongoose.connect(process.env.DATABASE_URL).then(
+    const options = {
+        useNewUrlParser: true
+    };
+    mongoose.connect(process.env.DATABASE_URL, options).then(
         () => {
             debug('Connect to MongoDB - OK');
         },

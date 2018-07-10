@@ -1,10 +1,39 @@
 <% include ../partials/header.ejs %>
 
-<div class="container">
-    <h1><%- message %></h1>
-    <h2><%- error.status %></h2>
-    <div>
-        <pre><%- error.stack %></pre>
+<div id="error-page" class="container">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <div><strong>ERROR</strong></div>
+        <div class="message-body">
+            <div class="text-center">
+                <h2><strong><%- error.message %></strong></h2>
+                <h3>
+                    <% if (error.code) { %>
+                    Code: <%- error.code %>
+                    <% } %>
+                    <% if (error.type) { %>
+                    Type: <%- error.type %>
+                    <% } %>
+                </h3>
+            </div>
+            <div>
+                <% if (error.request_info) { %>
+                Request Info:
+                <pre><code><%- error.request_info %></code></pre>
+                <% } %>
+            </div>
+            <div>
+                <% if (error.response_data) { %>
+                Response Data:
+                <pre><code><%- error.response_data %></code></pre>
+                <% } %>
+            </div>
+            <div>
+                <% if (error.stack) { %>
+                Stack:
+                <pre><%- error.stack %></pre>
+                <% } %>
+            </div>
+        </div>
     </div>
 </div>
 
