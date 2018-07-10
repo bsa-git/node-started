@@ -27,7 +27,10 @@ module.exports = function (req, res, next) {
     // res.locals.copyright = process.env.PERSONAL_COPYRIGHT;
 
     // Check .env
-    Utils.isEnvJs();
+    if(req.app.get('env') === 'development'){
+        Utils.isEnvJs();
+    }
+
 
     // debug(Utils.getControllerAction(req.path));
 
