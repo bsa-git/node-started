@@ -5,7 +5,7 @@
 const Utils = require('../plugins/utils.class');
 const homeController = require('./home');
 const maintenanceController = require('./maintenance');
-const ExxController = require('./exx.class');
+const ExxController = require('./exx.server.class');
 // const debug = require('debug')('app:routes.controllers');
 
 /**

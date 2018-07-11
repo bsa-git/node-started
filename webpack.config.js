@@ -52,7 +52,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new Dotenv()
+        new Dotenv({
+            path: './.env', // Path to .env file (this is the default)
+            systemvars: true
+        })
     ],
     node: {
         fs: "empty" // avoids error messages

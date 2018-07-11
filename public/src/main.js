@@ -2,7 +2,7 @@
 
 // Add generator-runtime for babel-loader
 import './js/plugins/runtime'
-import ExxController from './js/controllers/exx.class'
+import ExxController from './js/controllers/exx.client.class'
 import HttpBox from './js/plugins/http.client.class'
 import View from './js/plugins/view.class'
 const debug = require('debug')('app:main');

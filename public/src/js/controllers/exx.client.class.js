@@ -1,6 +1,6 @@
 "use strict";
 
-import Base from './base.class'
+import Base from './base.client.class'
 import View from '../plugins/view.class'
 const debug = require('debug')('app:exx.controller');
 

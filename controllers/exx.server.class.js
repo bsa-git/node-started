@@ -2,7 +2,7 @@
 
 const path = require('path');
 const Utils = require('../plugins/utils.class');
-const Base = require('./base.class');
+const Base = require('./base.server.class');
 const Message = require('../models/Message');
 const debug = require('debug')('app:exx.controller');
 
