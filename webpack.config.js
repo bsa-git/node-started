@@ -54,7 +54,7 @@ module.exports = {
     plugins: [
         new Dotenv({
             path: './.env', // Path to .env file (this is the default)
-            systemvars: true
+            systemvars: true // It makes it possible to work in production mode on Heroku hosting
         })
     ],
     node: {
