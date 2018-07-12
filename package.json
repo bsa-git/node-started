@@ -24,13 +24,13 @@
     "dotenv": "^6.0.0",
     "dotenv-webpack": "^1.5.7",
     "ejs": "2.4.1",
-    "express": "4.13.3",
+    "express": "^4.16.3",
     "express-flash": "^0.0.2",
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
     "lodash": "^4.17.10",
     "mongoose": "^5.2.2",
-    "nodemon": "^1.17.5",
+    "nodemon": "^1.18.1",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
