@@ -8,14 +8,18 @@ npm-debug.log
 .DS_Store
 .idea
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
 # Docker
 Dockerfile
 docker-compose.yml
 
 # Data
-data/db
-data/log
+data/db/*
+!data/db/README.md
+data/log/*
+!data/log/README.md
 
 # Public
 public/dist/main.*
