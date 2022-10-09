@@ -10,7 +10,8 @@ const debug = require('debug')('app:models');
  */
 exports.connect = () => {
     const options = {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useUnifiedTopology: true
     };
     mongoose.connect(process.env.DATABASE_URL, options).then(
         () => {
