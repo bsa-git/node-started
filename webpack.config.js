@@ -2,6 +2,7 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+    mode: 'production',
     // source directory
     context: path.resolve(__dirname), // source directory
     entry: { // entry names
